@@ -1,0 +1,24 @@
+import django.db.models.deletion
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ("habits", "0001_initial"),
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name="habit",
+            name="related_habit",
+            field=models.ForeignKey(
+                blank=True,
+                limit_choices_to={"nice_habit": True},
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="habits.habit",
+                verbose_name="связанная привычка",
+            ),
+        ),
+    ]
