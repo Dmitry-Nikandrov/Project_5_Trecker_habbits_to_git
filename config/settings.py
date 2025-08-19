@@ -3,6 +3,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
+from django.conf.global_settings import STATIC_ROOT, CACHES
 
 load_dotenv()
 
@@ -115,6 +116,8 @@ USE_I18N = True
 
 
 STATIC_URL = "static/"
+STATIC_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = "media/"
 
@@ -141,3 +144,10 @@ CELERY_BEAT_SCHEDULE = {
 
 TELEGRAM_URL = "https://api.telegram.org/bot"
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+CACHES = {
+    'default': {
+        'BACKEND': 'dgango.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+    }
+}
