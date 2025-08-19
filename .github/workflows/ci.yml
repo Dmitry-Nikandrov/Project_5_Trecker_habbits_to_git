@@ -73,8 +73,8 @@ jobs:
           echo "STRIPE_API_KEY=${{ secrets.STRIPE_API_KEY }}" >> .env
 
 
-      - name: Log in to Docker Hub
-        run: echo ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+#      - name: Log in to Docker Hub
+#        run: echo ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
 
   deploy:
     runs-on: ubuntu-latest
